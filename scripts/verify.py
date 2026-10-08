@@ -185,6 +185,8 @@ def smoke() -> int:
 
 
 def main() -> int:
+    if sys.platform == "win32" and hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser()
     parser.add_argument("--smoke", action="store_true", help="pre-training import/GPU check")
     if parser.parse_args().smoke:
